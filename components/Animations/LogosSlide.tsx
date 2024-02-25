@@ -36,7 +36,7 @@ const LogosSlide: React.FC<LogosSlideProps> = ({ style }) => {
         "--n12": "-100%",
         "--n21": "0",
         "--n22": "-200%",
-      }}
+      }as any}
     >
       <div>{logoItems}</div>
       <div>{logoItems}</div>

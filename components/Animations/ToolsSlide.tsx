@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-const ToolsSlide = ({ tools }) => {
+const ToolsSlide = ({ tools }: { tools: string[] }) => {
   let toolItems = tools.map((tool, index) => <span key={index}>{tool}</span>);
 
   return (
@@ -8,13 +8,15 @@ const ToolsSlide = ({ tools }) => {
       <div className="Body">
         <div
           className="scroll"
-          style={{
-            "--t": "70s",
-            "--n11": "-100%",
-            "--n12": "100%",
-            "--n21": "-200%",
-            "--n22": "0",
-          }}
+          style={
+            {
+              "--t": "70s",
+              "--n11": "-100%",
+              "--n12": "100%",
+              "--n21": "-200%",
+              "--n22": "0",
+            } as any
+          }
         >
           <div>{toolItems}</div>
           <div>{toolItems}</div>

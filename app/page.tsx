@@ -49,21 +49,21 @@ export default function Home() {
             className={cn(
               "p-4 font-bold rounded-lg text-sm",
               open
-                ? "bg-secondary text-secondary-content p-2"
-                : "bg-primary text-primary-content"
+                ? "bg-secondary text-secondary-content p-2 pr-3 text-sm"
+                : "bg-primary text-primary-content py-3 text-base "
             )}
             whileHover={{
               scale: 1.1,
               transition: { duration: 0.1 },
             }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => {
               setOpen(!open);
             }}
             layout
           >
-            {open ? "Ismael" : "?! Ismael"}
+            {open ? "⭐Ismael" : "?! Ismael"}
           </motion.button>
         </motion.div>
       </AnimatePresence>

@@ -6,7 +6,7 @@ import {
   ArrowRightCircleIcon,
 } from "@heroicons/react/20/solid";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const ThemeSwitcher = () => {
   const themes = [
@@ -45,10 +45,11 @@ export const ThemeSwitcher = () => {
   ];
   const { mode, toggleMode } = useThemeStore();
 
-  const handleToggle = (theme: string) => {
-    toggleMode(theme);
+  const handleToggle = (theme: typeof themes[number]) => {
+    toggleMode(theme as any);
   };
-  function handleClick(e) {
+
+  function handleClick(e: React.MouseEvent<HTMLLIElement>) {
     const clickedValue = (e.target as HTMLInputElement).value;
     handleToggle(clickedValue);
   }
@@ -81,7 +82,7 @@ export const ThemeSwitcher = () => {
                 aria-label={theme}
                 value={theme}
                 onClick={(e) => {
-                  handleClick(e);
+                  handleClick(e as any);
                 }}
               />
             </li>
@@ -93,6 +94,16 @@ export const ThemeSwitcher = () => {
 };
 
 export const ThemeButton = () => {
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const { mode } = useThemeStore();
   const [isArrowLeft, setIsArrowLeft] = useState(false);
   function handleArrow() {
@@ -106,28 +117,32 @@ export const ThemeButton = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed  select-none text-center right-1 text-xs mb-10 text-accent"
+            className="fixed pointer-events-none select-none text-center right-1 text-xs mb-10 text-accent"
           >
             <p>theme:</p> <span>{mode}</span>
           </motion.div>
         ) : null}
       </AnimatePresence>
       <motion.div
-        className="fixed  top-9 z-50"
+        className="fixed lg:-right-[100%] top-9 z-50"
         initial={{ right: -100 }}
         animate={{ right: isArrowLeft ? 0 : -100 }}
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
       >
         {isArrowLeft ? (
-          <ArrowRightCircleIcon
-            className="w-5 mx-2 inline-block cursor-pointer"
-            onClick={handleArrow}
-          />
+          <>
+            <ArrowRightCircleIcon
+              className="w-5 mx-2 inline-block cursor-pointer"
+              onClick={handleArrow}
+            />
+          </>
         ) : (
-          <ArrowLeftCircleIcon
-            className="w-5 mx-2 inline-block cursor-pointer"
-            onClick={handleArrow}
-          />
+          <>
+            <ArrowLeftCircleIcon
+              className="w-5 mx-2 inline-block cursor-pointer"
+              onClick={handleArrow}
+            />
+          </>
         )}
         <ThemeSwitcher />
       </motion.div>

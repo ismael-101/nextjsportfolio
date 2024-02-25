@@ -39,12 +39,18 @@ export default function NavItem() {
           </>
         ) : (
           <motion.div
-            className="fixed top-0 z-50 "
-            initial={{ right: -100, top: 0 }}
+            className={cn("fixed top-10  h-0 z-50",
+            isArrowLeft ? "w-full" : "")}
+            initial={{ right: -100 }}
             animate={{ right: isArrowLeft ? 0 : -100 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
           >
-            <motion.div className="gap-5 flex">
+            <motion.div
+              className={cn(
+                "gap-5 flex",
+                isArrowLeft ? "flex-row-reverse w-full gap-0" : ""
+              )}
+            >
               <motion.div transition={{ duration: 1 }}>
                 {isArrowLeft ? (
                   <ArrowRightCircleIcon
@@ -59,13 +65,22 @@ export default function NavItem() {
                 )}
               </motion.div>
               <motion.div
+              className="w-full"
                 onClick={() => {
                   setTimeout(() => {
                     handleArrow();
                   }, 500);
                 }}
               >
-                <Nav />
+                <div
+                  className={cn(
+                    isArrowLeft
+                      ? "w-[95%] m-auto h-screen flex rounded-2xl bg-white items-center justify-center"
+                      : ""
+                  )}
+                >
+                  <Nav />
+                </div>
               </motion.div>
             </motion.div>
           </motion.div>
