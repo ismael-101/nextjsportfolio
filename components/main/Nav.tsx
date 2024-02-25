@@ -13,25 +13,8 @@ import {
 } from "framer-motion";
 
 import { useEffect, useState } from "react";
-import { ThemeButton } from "../ThemeSwitcher";
 
 export default function Nav() {
-  // move the nav base on the window size
-  const [windowWidth, setWindowWidth] = useState(0);
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const navX = useTransform(x, [0, window.innerWidth], [0, 100]);
-  const navY = useTransform(y, [0, window.innerWidth], [0, 100]);
-
   const links = [
     {
       path: "/",
@@ -80,7 +63,6 @@ export default function Nav() {
     const yRange = mapRange(0, bounds.height, -1, 1)(relativeY);
     x.set(xRange * 10);
     y.set(yRange * 10);
-    console.log(xRange);
   };
 
   return (
@@ -92,16 +74,20 @@ export default function Nav() {
       >
         <ul className="flex flex-col lg:flex-row justify-center gap-10">
           {links.map((link) => {
+            
             const x = useMotionValue(0);
             const y = useMotionValue(0);
             const textX = useTransform(x, (latest) => latest * 0.5);
             const textY = useTransform(y, (latest) => latest * 0.5);
+            
+
             return (
               <motion.li
                 className=""
                 onPointerMove={(event) => {
                   const item = event.currentTarget;
                   setTransform(item, event, x, y);
+                  
                 }}
                 key={link.path}
                 onPointerLeave={(event) => {

@@ -1,21 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-
-import {
-  AnimatePresence,
-  MotionValue,
-  motion,
-  useMotionValue,
-  useTransform,
-  useAnimation,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeftCircleIcon,
   ArrowRightCircleIcon,
-  BoltIcon,
 } from "@heroicons/react/20/solid";
-
 import { useEffect, useState } from "react";
 import { ThemeButton } from "../ThemeSwitcher";
 import Nav from "./Nav";

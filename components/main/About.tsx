@@ -32,7 +32,7 @@ export default function About() {
             Little bit about Ismael Ali
           </h2>
           <div className="flex flex-col items-center lg:flex-row relative">
-            <div className="z-10  px-2 rounded-lg text-neutral  lg:max-w-[40vw]">
+            <div className="z-10  px-2 rounded-lg lg:max-w-[40vw]">
               <p className="mt-3  lg:mt-3">
                 Hello, I'm Ismael, a dedicated web developer. My coding journey
                 began in 2019 through online courses and tutorials, and my
@@ -61,7 +61,7 @@ export default function About() {
             </div>
             <div className="lg:absolute lg:right-0 lg:-top-7 w-[10rem] lg:w-[22rem] mt-5  ">
               <Image
-                className="bg-cover rounded-full h-auto transform -rotate-12 shadow-2xl "
+                className="bg-cover rounded-full h-auto transform -rotate-12 shadow-2xl pointer-events-none"
                 src={ismael}
                 width={1000}
                 height={1000}

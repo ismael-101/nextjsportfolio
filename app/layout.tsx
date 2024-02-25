@@ -31,11 +31,8 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { metadata } from "@/components/Metadata";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "../components/main/Nav";
 import Hydrate from "@/components/Hydrate";
 import NavItem from "@/components/main/NavItem";
 
@@ -46,20 +43,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const router = useRouter();
-
   return (
     <html lang="en">
       <Hydrate>
-        <body className={` ${inter.className}`}>
-          <AnimatePresence
-            mode="wait"
-            onExitComplete={() => window.scrollTo(0, 0)}
-          >
-            <NavItem />
-            {children}
-          </AnimatePresence>
-        </body>
+        <AnimatePresence
+          mode="wait"
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
+          <NavItem />
+          {children}
+        </AnimatePresence>
       </Hydrate>
     </html>
   );

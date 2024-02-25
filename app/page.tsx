@@ -46,7 +46,12 @@ export default function Home() {
             </motion.div>
           )}
           <motion.button
-            className={cn("text-neutral p-4 font-bold rounded-lg text-sm", open ? "bg-secondary p-2" : "bg-primary")}
+            className={cn(
+              "p-4 font-bold rounded-lg text-sm",
+              open
+                ? "bg-secondary text-secondary-content p-2"
+                : "bg-primary text-primary-content"
+            )}
             whileHover={{
               scale: 1.1,
               transition: { duration: 0.1 },
@@ -57,7 +62,6 @@ export default function Home() {
               setOpen(!open);
             }}
             layout
-            
           >
             {open ? "Ismael" : "?! Ismael"}
           </motion.button>
