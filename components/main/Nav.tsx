@@ -1,4 +1,5 @@
 "use client";
+
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,12 +11,9 @@ import {
   useTransform,
   useAnimation,
 } from "framer-motion";
-import ThemeSwitcher from "../ThemeSwitcher";
+
 import { useEffect, useState } from "react";
-import {
-  ArrowLeftCircleIcon,
-  ArrowRightCircleIcon,
-} from "@heroicons/react/16/solid";
+import { ThemeButton } from "../ThemeSwitcher";
 
 export default function Nav() {
   // move the nav base on the window size
@@ -28,6 +26,11 @@ export default function Nav() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const navX = useTransform(x, [0, window.innerWidth], [0, 100]);
+  const navY = useTransform(y, [0, window.innerWidth], [0, 100]);
 
   const links = [
     {
@@ -80,35 +83,14 @@ export default function Nav() {
     console.log(xRange);
   };
 
-  const [isArrowLeft, setIsArrowLeft] = useState(false);
-  function handleArrow() {
-    setIsArrowLeft(!isArrowLeft);
-  }
-
   return (
-    <motion.nav className="fixed top-1/3 p-8 z-50">
-      <motion.div
-        className="fixed top-0 right-0"
-        initial={{ right: -100 }}
-        animate={{ right: isArrowLeft ? 0 : -100 }}
-        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+      <motion.nav
+        className="flex flex-col lg:flex-row "
+        initial={{ x: 0 }}
+        transition={{ type: "spring", stiffness: 50 }}
       >
-        {" "}
-        {isArrowLeft ? (
-          <ArrowRightCircleIcon
-            className="w-5 inline-block cursor-pointer"
-            onClick={handleArrow}
-          />
-        ) : (
-          <ArrowLeftCircleIcon
-            className="w-5 inline-block cursor-pointer"
-            onClick={handleArrow}
-          />
-        )}
-        <ThemeSwitcher />
-      </motion.div>
-      <ul className="flex flex-col gap-10">
-        <AnimatePresence>
+        <ul className="flex flex-col lg:flex-row justify-center gap-10">
           {links.map((link) => {
             const x = useMotionValue(0);
             const y = useMotionValue(0);
@@ -116,6 +98,7 @@ export default function Nav() {
             const textY = useTransform(y, (latest) => latest * 0.5);
             return (
               <motion.li
+                className=""
                 onPointerMove={(event) => {
                   const item = event.currentTarget;
                   setTransform(item, event, x, y);
@@ -129,10 +112,13 @@ export default function Nav() {
               >
                 <MotionLink
                   className={cn(
-                    "font-medium relative rounded-md text-sm py-2 px-4 transition-all duration-500 ease-out hover:bg-base-300",
-                    pathname === link.path ? "bg-base-300" : ""
+                    " relative rounded-md text-sm py-2 px-4 transition-all duration-500 ease-out hover:bg-base-300",
+                    pathname === link.path
+                      ? "btn-sm btn-active btn-neutral hover:bg-blue-900"
+                      : ""
                   )}
                   href={link.path}
+                  scroll={false}
                 >
                   <motion.span
                     style={{ x: textX, y: textY }}
@@ -144,15 +130,15 @@ export default function Nav() {
                     <motion.div
                       transition={{ type: "spring" }}
                       layoutId="underline"
-                      className="absolute w-full h-full rounded-md left-0 bottom-0 bg-primary  "
+                      className="absolute w-full h-full rounded-md left-0 bottom-0  "
                     ></motion.div>
                   ) : null}
                 </MotionLink>
               </motion.li>
             );
           })}
-        </AnimatePresence>
-      </ul>
-    </motion.nav>
+        </ul>
+      </motion.nav>
+    </AnimatePresence>
   );
 }

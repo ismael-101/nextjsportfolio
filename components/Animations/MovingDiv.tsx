@@ -20,13 +20,22 @@ export default function MovingDiv() {
     >
       <motion.div
         className="h-2 w-2 bg-blue-500"
-        style={{ x: randomOffsetX, y: randomOffsetY }}
+        style={{
+          x: randomOffsetX / Math.random() - randomOffsetX,
+          y: randomOffsetY / Math.random() - randomOffsetY,
+        }}
       />
       <motion.div
         className="h-2 w-2 bg-green-500"
-        style={{ x: -randomOffsetX, y: -randomOffsetY }}
+        style={{
+          x: randomOffsetX * Math.random() - randomOffsetX,
+          y: randomOffsetY / Math.random() - randomOffsetY,
+        }}
       />
       {/* Add more animated divs as needed */}
+
+        
+
     </div>
   );
 }

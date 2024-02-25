@@ -61,7 +61,7 @@ const AnimatedTitle = () => {
           {text2.split(" ").map((word, index) => {
             return (
               <Word
-                className="text-3xl max-md:text-2xl"
+                className="lg:text-4xl text-1xl sm:text-2xl text-secondary"
                 ref={ref}
                 aria-hidden="true"
                 key={index}
@@ -91,7 +91,7 @@ const AnimatedTitle = () => {
         </h3>
 
         <h1
-          className="text-6xl font-bold max-md:text-5xl mt-2"
+          className="font-bold lg:text-6xl text-3xl sm:text-4xl lg:mt-2 text-primary"
           aria-label={text}
           role="heading"
         >

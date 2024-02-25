@@ -18,7 +18,7 @@ export default function Home() {
             layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.9 } }}
-            className={cn("flex flex-col items-center justify-center ")}
+            className={cn("flex flex-col items-center justify-center")}
           >
             <AnimatedTitle />
             <motion.div

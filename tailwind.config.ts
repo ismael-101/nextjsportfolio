@@ -15,7 +15,11 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("daisyui"), require("tailwind-scrollbar-daisyui")],
+  plugins: [
+    require("daisyui"),
+    // require("tailwind-scrollbar-daisyui"),
+    require("tailwind-scrollbar")({ preferredStrategy: "pseudoelements" }),
+  ],
   daisyui: {
     themes: [
       "light",

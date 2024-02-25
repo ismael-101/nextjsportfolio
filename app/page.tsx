@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import LogosSlide from "../components/Animations/LogosSlide";
 import AnimatedTitle from "../components/Animations/AnimatedTitle";
 import { useState } from "react";
-import MovingDiv from "@/components/Animations/MovingDiv";
 import {
   pageVariants,
   pageTransition,
@@ -16,10 +15,10 @@ export default function Home() {
   const [open, setOpen] = useState(false);
 
   return (
-    <main className="w-full h-full relative">
+    <main className="relative">
       <AnimatePresence>
         <motion.div
-          className="h-screen flex flex-col items-center justify-center text-center "
+          className="h-[100dvh] lg:h-[90dvh] flex flex-col items-center justify-center text-center w-[70vw] m-auto "
           initial="initial"
           animate="in"
           exit="out"
@@ -31,6 +30,7 @@ export default function Home() {
               layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { duration: 0.9 } }}
+              exit={{ opacity: 0, transition: { duration: 0.9 } }}
               className={cn("flex flex-col items-center justify-center ")}
             >
               <AnimatedTitle />
@@ -38,25 +38,28 @@ export default function Home() {
                 layout
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 1 } }}
-                className="w-96 m-5"
+                exit={{ opacity: 0 }}
+                className="lg:w-96 w-72 m-5"
               >
                 <LogosSlide />
               </motion.div>
             </motion.div>
           )}
           <motion.button
-            className="p-2 bg-secondary rounded-md mt-5"
+            className={cn("text-neutral p-4 font-bold rounded-lg text-sm", open ? "bg-secondary p-2" : "bg-primary")}
             whileHover={{
               scale: 1.1,
               transition: { duration: 0.1 },
             }}
+            transition={{ duration: 0.5 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => {
               setOpen(!open);
             }}
             layout
+            
           >
-            ?! Ismael
+            {open ? "Ismael" : "?! Ismael"}
           </motion.button>
         </motion.div>
       </AnimatePresence>

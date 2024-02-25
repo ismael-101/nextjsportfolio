@@ -1,8 +1,14 @@
 "use client";
 
 import { useThemeStore } from "@/store";
+import {
+  ArrowLeftCircleIcon,
+  ArrowRightCircleIcon,
+} from "@heroicons/react/20/solid";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
-export default function ThemeSwitcher() {
+export const ThemeSwitcher = () => {
   const themes = [
     "light",
     "dark",
@@ -50,7 +56,7 @@ export default function ThemeSwitcher() {
   return (
     <div className="dropdown ">
       <div tabIndex={0} role="button" className="btn m-1">
-        Theme
+        theme
         <svg
           width="12px"
           height="12px"
@@ -63,7 +69,7 @@ export default function ThemeSwitcher() {
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content z-[1] p-3 shadow-2xl bg-base-300 rounded-box w-52 h-52 overflow-y-auto overflow-x-hidden absolute top-10 right-0  scrollbar-thin  "
+        className="dropdown-content  z-[1] p-3 shadow-2xl bg-base-300 rounded-box w-52 h-52 overflow-y-auto overflow-x-hidden absolute top-10 right-0  scrollbar-thin  "
       >
         {themes.map((theme) => {
           return (
@@ -84,4 +90,47 @@ export default function ThemeSwitcher() {
       </ul>
     </div>
   );
-}
+};
+
+export const ThemeButton = () => {
+  const { mode } = useThemeStore();
+  const [isArrowLeft, setIsArrowLeft] = useState(false);
+  function handleArrow() {
+    setIsArrowLeft(!isArrowLeft);
+  }
+  return (
+    <>
+      <AnimatePresence>
+        {!isArrowLeft ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed  select-none text-center right-1 text-xs mb-10 text-accent"
+          >
+            <p>theme:</p> <span>{mode}</span>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+      <motion.div
+        className="fixed  top-9 z-50"
+        initial={{ right: -100 }}
+        animate={{ right: isArrowLeft ? 0 : -100 }}
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      >
+        {isArrowLeft ? (
+          <ArrowRightCircleIcon
+            className="w-5 mx-2 inline-block cursor-pointer"
+            onClick={handleArrow}
+          />
+        ) : (
+          <ArrowLeftCircleIcon
+            className="w-5 mx-2 inline-block cursor-pointer"
+            onClick={handleArrow}
+          />
+        )}
+        <ThemeSwitcher />
+      </motion.div>
+    </>
+  );
+};

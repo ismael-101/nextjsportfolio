@@ -37,6 +37,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "../components/main/Nav";
 import Hydrate from "@/components/Hydrate";
+import NavItem from "@/components/main/NavItem";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,12 +51,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Hydrate>
-        <body className={`${inter.className}`}>
-          <Nav />
+        <body className={` ${inter.className}`}>
           <AnimatePresence
             mode="wait"
             onExitComplete={() => window.scrollTo(0, 0)}
           >
+            <NavItem />
             {children}
           </AnimatePresence>
         </body>
