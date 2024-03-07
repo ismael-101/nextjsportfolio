@@ -7,7 +7,7 @@ import {
   ArrowRightCircleIcon,
 } from "@heroicons/react/20/solid";
 import { useEffect, useState } from "react";
-import { ThemeButton } from "../ThemeSwitcher";
+import { ThemeButton, ThemeSwitcher } from "../ThemeSwitcher";
 import Nav from "./Nav";
 
 export default function NavItem() {
@@ -26,66 +26,71 @@ export default function NavItem() {
   }, []);
 
   return (
-    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
-      <motion.div
-        className="z-50 lg:flex lg:min-h-[10dvh] lg:items-center lg:justify-center  overflow-x-clip"
-        initial={{ x: 0 }}
-        transition={{ type: "spring", stiffness: 50 }}
-      >
-        {windowWidth > 1024 ? (
-          <>
-            <ThemeButton />
-            <Nav />
-          </>
-        ) : (
+    <motion.div
+      className="z-50 lg:flex lg:min-h-[10dvh]  lg:items-center lg:justify-center  overflow-x-clip "
+      initial={{ x: 0 }}
+      transition={{ type: "spring", stiffness: 50 }}
+    >
+      {windowWidth > 1024 ? (
+        <>
+          <ThemeButton />
+          <Nav />
+        </>
+      ) : (
+        <motion.div
+          className={cn("fixed top-10  h-0 z-50", isArrowLeft ? "w-full" : "")}
+          initial={{ right: -100 }}
+          animate={{ right: isArrowLeft ? 0 : -100 }}
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        >
           <motion.div
-            className={cn("fixed top-10  h-0 z-50",
-            isArrowLeft ? "w-full" : "")}
-            initial={{ right: -100 }}
-            animate={{ right: isArrowLeft ? 0 : -100 }}
-            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            className={cn(
+              "gap-5 flex",
+              isArrowLeft ? "flex-row-reverse w-full gap-0 " : ""
+            )}
           >
-            <motion.div
-              className={cn(
-                "gap-5 flex",
-                isArrowLeft ? "flex-row-reverse w-full gap-0" : ""
+            <motion.div transition={{ duration: 1 }}>
+              {isArrowLeft ? (
+                <ArrowRightCircleIcon
+                  className="w-5 inline-block cursor-pointer absolute z-50"
+                  onClick={handleArrow}
+                />
+              ) : (
+                <ArrowLeftCircleIcon
+                  className="w-5 inline-block cursor-pointer"
+                  onClick={handleArrow}
+                />
               )}
+            </motion.div>
+            <motion.div
+              className="w-full flex justify-end"
+              onClick={() => {
+                setTimeout(() => {
+                  handleArrow();
+                }, 500);
+              }}
             >
-              <motion.div transition={{ duration: 1 }}>
-                {isArrowLeft ? (
-                  <ArrowRightCircleIcon
-                    className="w-5 inline-block cursor-pointer"
-                    onClick={handleArrow}
-                  />
-                ) : (
-                  <ArrowLeftCircleIcon
-                    className="w-5 inline-block cursor-pointer"
-                    onClick={handleArrow}
-                  />
+              <div
+                className={cn(
+                  isArrowLeft
+                    ? "w-1/3 gap-5 flex-col px-12 py-3  h-full flex rounded-2xl bg-white items-center justify-center"
+                    : ""
                 )}
-              </motion.div>
-              <motion.div
-              className="w-full"
-                onClick={() => {
-                  setTimeout(() => {
-                    handleArrow();
-                  }, 500);
-                }}
               >
+                <Nav />
                 <div
-                  className={cn(
-                    isArrowLeft
-                      ? "w-[95%] m-auto h-screen flex rounded-2xl bg-white items-center justify-center"
-                      : ""
-                  )}
+
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
                 >
-                  <Nav />
+                  <ThemeSwitcher />
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </motion.div>
-        )}
-      </motion.div>
-    </AnimatePresence>
+        </motion.div>
+      )}
+    </motion.div>
   );
 }

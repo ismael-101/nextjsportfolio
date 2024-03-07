@@ -111,7 +111,6 @@ export const ThemeButton = () => {
   }
   return (
     <>
-      <AnimatePresence>
         {!isArrowLeft ? (
           <motion.div
             initial={{ opacity: 0 }}
@@ -122,7 +121,6 @@ export const ThemeButton = () => {
             <p>theme:</p> <span>{mode}</span>
           </motion.div>
         ) : null}
-      </AnimatePresence>
       <motion.div
         className="fixed lg:-right-[100%] top-9 z-50"
         initial={{ right: -100 }}

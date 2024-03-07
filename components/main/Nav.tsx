@@ -29,7 +29,7 @@ export default function Nav() {
   };
 
   return (
-    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+    <AnimatePresence mode="wait" >
       <motion.nav
         className="flex flex-col lg:flex-row"
         initial={{ x: 0 }}
@@ -61,7 +61,7 @@ export default function Nav() {
               >
                 <MotionLink
                   className={cn(
-                    "relative rounded-md text-sm py-2 px-4 transition-all duration-500 ease-out hover:bg-base-300",
+                    "relative rounded-md  text-sm py-2 px-4 transition-all duration-500 ease-out hover:bg-base-300",
                     pathname === link.path
                       ? "btn-sm btn-active btn-neutral hover:bg-blue-900"
                       : ""

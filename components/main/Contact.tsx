@@ -4,7 +4,29 @@ import {
   pageTransition,
 } from "@/components/Animations/PageAnimation";
 import { AnimatePresence, motion } from "framer-motion";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
 export default function Contact() {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      message: "",
+      terms: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .max(20, "name must be 20 charracters or less.")
+        .required("please enter your name."),
+      email: Yup.string().email("Invalid email address").required("Required"),
+      message: Yup.string().required("message is required."),
+      terms: Yup.string().required("terms must be accepted."),
+    }),
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
   return (
     <AnimatePresence>
       <motion.div
@@ -15,7 +37,137 @@ export default function Contact() {
         variants={pageVariants}
         transition={pageTransition}
       >
-        <div className="relative flex items-top justify-center sm:items-center sm:pt-0">
+        <div id="contact" className=" flex  items-center justify-center">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="bg-white flex lg:flex-row flex-col rounded-lg w-3/4 lg:h-3/4 h-[100%] relative"
+          >
+            <div className="text-gray-700 p-6 lg:p-20  lg:px-10 z-10">
+              <h1 className="text-3xl pb-2">lets get started</h1>
+              <p className="text-lg text-gray-500">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Perferendis voluptates nobis veritatis! In ipsam quas nihil iure
+                a cupiditate quia.
+              </p>
+              <div className="mt-6 lg:flex lg:gap-5">
+                <div className="flex-1">
+                  {/* name */}
+                  <div className="pb-4">
+                    <label
+                      className={`block text-sm pb-2 ${
+                        formik.touched.name && formik.errors.name
+                          ? "text-red-400"
+                          : ""
+                      }`}
+                      htmlFor="name"
+                    >
+                      {formik.touched.name && formik.errors.name
+                        ? formik.errors.name
+                        : "name"}
+                    </label>
+                    <input
+                      className="border-2 bg-white input border-neutral-content p-2 rounded-md w-full   focus:border-primary focus:outline-none focus:ring-2 "
+                      type="text"
+                      name="name"
+                      placeholder="enter your name"
+                      value={formik.values.name}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                  </div>{" "}
+                  {/* email */}
+                  <div className="pb-4">
+                    <label
+                      className={`block text-sm pb-2 ${
+                        formik.touched.email && formik.errors.email
+                          ? "text-red-400"
+                          : ""
+                      }`}
+                    >
+                      {formik.touched.email && formik.errors.email
+                        ? formik.errors.email
+                        : "email"}
+                    </label>
+                    <input
+                      className=" border-2 bg-white input border-neutral-content p-2 rounded-md w-full  focus:border-primary focus:outline-none focus:ring-2 "
+                      type="text"
+                      name="email"
+                      placeholder="enter your email"
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                  </div>
+                  {/* message */}
+                  <div className="pb-4">
+                    <label
+                      className={`block text-sm pb-2 ${
+                        formik.touched.message && formik.errors.message
+                          ? "text-red-400"
+                          : ""
+                      }`}
+                      htmlFor="message"
+                    >
+                      {formik.touched.message && formik.errors.message
+                        ? formik.errors.message
+                        : "message"}
+                    </label>
+                    <textarea
+                      className="textarea border-2 bg-white input border-neutral-content p-2 rounded-md w-full  focus:border-primary focus:outline-none focus:ring-2 h-32 "
+                      name="message"
+                      placeholder="enter your message"
+                      value={formik.values.message}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                  </div>
+                </div>
+                <div className="lg:flex-1 ">
+                  {/* terms of service */}
+                  <div className="pb-4">
+                    <label
+                      className={`block text-sm pb-2 ${
+                        formik.touched.terms && formik.errors.terms
+                          ? "text-red-400"
+                          : ""
+                      }`}
+                      htmlFor="terms"
+                    >
+                      {formik.touched.terms && formik.errors.terms
+                        ? formik.errors.terms
+                        : "Terms of service"}
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        className="checkbox border-neutral-content checkbox-primary p-2 focus:border-primary focus:outline-none focus:ring-2"
+                        name="terms"
+                        value="checked"
+                        onChange={formik.handleChange}
+                      />
+                      <p className="text-sm p-3">
+                        Iagree to the terms and conditions
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    className="btn btn-graborder-neutral-content btn-wide text-graborder-neutral-content-content  lg:mt-7"
+                  >
+                    ارسال
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+{
+  /* <div className="relative flex items-top justify-center sm:items-center sm:pt-0">
           <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div className="mt-8 overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-2">
@@ -51,7 +203,7 @@ export default function Contact() {
                       />
                     </svg>
                     <div className="ml-4 tracking-wide font-semibold w-40">
-                      Acme Inc, Street, State, Postal Code
+                     Bielefeld, Germany, NRW
                     </div>
                   </div>
 
@@ -73,7 +225,8 @@ export default function Contact() {
                       />
                     </svg>
                     <div className="ml-4 tracking-wide font-semibold w-40">
-                      +44 1234567890
+                      +0049 177 158 49 36
+                      +
                     </div>
                   </div>
 
@@ -150,8 +303,5 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </div>
-      </motion.div>
-    </AnimatePresence>
-  );
+        </div> */
 }

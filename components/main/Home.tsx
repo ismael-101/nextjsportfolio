@@ -4,48 +4,46 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import LogosSlide from "../Animations/LogosSlide";
 import AnimatedTitle from "../Animations/AnimatedTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
-
   return (
-    <AnimatePresence>
-      <motion.div className="h-screen flex flex-col items-center justify-center text-center ">
-        {open && (
+    <motion.div className="h-screen flex flex-col items-center justify-center text-center ">
+      {open && (
+        <motion.div
+          layout
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.9 } }}
+          className={cn("flex flex-col items-center justify-center")}
+        >
+          <AnimatedTitle />
           <motion.div
             layout
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.9 } }}
-            className={cn("flex flex-col items-center justify-center")}
+            animate={{ opacity: 1, transition: { delay: 1 } }}
+            className="w-96 m-5"
           >
-            <AnimatedTitle />
-            <motion.div
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 1 } }}
-              className="w-96 m-5"
-            >
-              <LogosSlide />
-            </motion.div>
+            <LogosSlide />
           </motion.div>
-        )}
-        <motion.button
-          className="p-2 bg-teal-700 text-white rounded-md mt-5"
-          whileHover={{
-            scale: 1.1,
-            transition: { duration: 0.1 },
-          }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => {
-            setOpen(!open);
-          }}
-          layout
-        >
-          ?! Ismael
-        </motion.button>
-      </motion.div>
-    </AnimatePresence>
+        </motion.div>
+      )}
+      <motion.button
+        className="p-2 bg-teal-700 text-white rounded-md mt-5"
+        whileHover={{
+          scale: 1.1,
+          transition: { duration: 0.1 },
+        }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => {
+          setOpen(!open);
+          console.log(open);
+        }}
+        layout
+      >
+        ?! Ismael
+      </motion.button>
+    </motion.div>
   );
 }
 

@@ -30,7 +30,6 @@
 
 "use client";
 
-import { AnimatePresence } from "framer-motion";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Hydrate from "@/components/Hydrate";
@@ -46,13 +45,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Hydrate>
-        <AnimatePresence
-          mode="wait"
-          onExitComplete={() => window.scrollTo(0, 0)}
-        >
-          <NavItem />
-          {children}
-        </AnimatePresence>
+        <NavItem />
+        {children}
       </Hydrate>
     </html>
   );
