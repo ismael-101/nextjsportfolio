@@ -44,12 +44,12 @@ export default function About() {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <div className="py-10 md:h-[100dvh] lg:h-[90dvh] flex items-center overflow-hidden">
+      <div className="py-10 md:h-[100dvh] lg:h-[85dvh] flex items-center overflow-hidden">
         <div className="w-full m-auto px-5 mx-auto lg:w-[65vw] lg:px-0 lg:my-14 prose">
           <h2 className="lg:text-2xl text-accent font-bold">
             Little bit about Ismael Ali
           </h2>
-          <div className="flex flex-col md:flex-row items-center w-full md:mx-auto relative">
+          <div className="flex flex-col md:flex-row items-center w-full md:mx-auto relative ">
             <div className="z-10 px-2 rounded-lg lg:max-w-[40vw] md:max-w-[50vw]">
               <p className="mt-3 lg:mt-3">{first}</p>
               <p className="my-3 lg:my-5">{second}</p>

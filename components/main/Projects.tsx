@@ -61,14 +61,17 @@ export default function Projects() {
 
   return (
     <motion.div
-      className="w-full h-full lg:h-[90dvh] flex flex-col items-center justify-center "
+      className="w-full h-screen lg:h-[80dvh] flex flex-col items-center justify-center "
       initial="initial"
       animate="in"
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
     >
-      <h1 className="font-bold text-3xl text-primary mt-14 mb-3 ">
+      <div className="h-full flex items-center justify-center w-full">
+        <h1>This page is coming soon ☕ </h1>
+      </div>
+      {/* <h1 className="font-bold text-3xl text-primary mt-14 mb-3 ">
         Some of my Projects
       </h1>
       <div className=" h-full flex flex-wrap justify-center w-[90vw] m-auto">
@@ -98,7 +101,7 @@ export default function Projects() {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </motion.div>
   );
 }

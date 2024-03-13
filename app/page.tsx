@@ -18,7 +18,7 @@ export default function Home() {
     <main className="relative">
       <AnimatePresence>
         <motion.div
-          className="h-[100dvh] lg:h-[90dvh] flex flex-col items-center justify-center text-center w-[70vw] m-auto "
+          className="h-[100dvh] lg:h-[80dvh] flex flex-col items-center justify-center text-center w-[70vw] m-auto "
           initial="initial"
           animate="in"
           exit="out"
