@@ -9,6 +9,7 @@ import {
 import { useEffect, useState } from "react";
 import { ThemeButton, ThemeSwitcher } from "../ThemeSwitcher";
 import Nav from "./Nav";
+import CVButton from "./CVButton";
 
 export default function NavItem() {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -34,7 +35,10 @@ export default function NavItem() {
       {windowWidth > 1024 ? (
         <>
           <ThemeButton />
+          <div className="flex gap-4">
           <Nav />
+          <CVButton />
+          </div>
         </>
       ) : (
         <motion.div
@@ -67,7 +71,7 @@ export default function NavItem() {
               onClick={() => {
                 setTimeout(() => {
                   handleArrow();
-                }, 500);
+                }, 30);
               }}
             >
               <div
@@ -79,12 +83,14 @@ export default function NavItem() {
               >
                 <Nav />
                 <div
-
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
                 >
-                  <ThemeSwitcher />
+                  <div className="flex flex-col">
+                    <CVButton />
+                    <ThemeSwitcher />
+                  </div>
                 </div>
               </div>
             </motion.div>

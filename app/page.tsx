@@ -15,7 +15,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
 
   return (
-    <main className="relative">
+    <main className="relative ">
       <AnimatePresence>
         <motion.div
           className="h-[100dvh] lg:h-[80dvh] flex flex-col items-center justify-center text-center w-[70vw] m-auto "

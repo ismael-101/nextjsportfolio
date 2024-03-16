@@ -26,7 +26,7 @@ export default function About() {
   evolving into a genuine obsession. It's like a drug to me; the
   more I learn, the more I crave. Organization is my forte, both
   in code and in life. Beyond coding, you'll find me immersed in
-  another love—swimming.`;
+  another love—coding.`;
   const third = ` Currently, I'm enrolled in courses on the Coursera platform,
   learning from some of the industry's top web developers. My
   focus is on honing my skills in JavaScript and React. I've also
@@ -44,9 +44,9 @@ export default function About() {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <div className="py-10 md:h-[100dvh] lg:h-[85dvh] flex items-center overflow-hidden">
-        <div className="w-full m-auto px-5 mx-auto lg:w-[65vw] lg:px-0 lg:my-14 prose">
-          <h2 className="lg:text-2xl text-accent font-bold">
+      <div className="py-10 md:h-[100dvh] lg:h-[85dvh] flex items-center overflow-hidden ">
+        <div className="w-full m-auto px-5 mx-auto lg:w-[65vw] lg:px-0 lg:my-14 prose ">
+          <h2 className="lg:text-2xl text-accent font-bold ">
             Little bit about Ismael Ali
           </h2>
           <div className="flex flex-col md:flex-row items-center w-full md:mx-auto relative ">
