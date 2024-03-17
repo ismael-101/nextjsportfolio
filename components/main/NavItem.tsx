@@ -44,7 +44,7 @@ export default function NavItem() {
         <motion.div
           className={cn("fixed top-10  h-0 z-50", isArrowLeft ? "w-full" : "")}
           initial={{ right: -100 }}
-          animate={{ right: isArrowLeft ? 0 : -100 }}
+          animate={{ right: isArrowLeft ? 0 : -110 }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
         >
           <motion.div

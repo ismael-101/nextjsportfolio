@@ -4,60 +4,60 @@ import { motion } from "framer-motion";
 import { pageTransition, pageVariants } from "../Animations/PageAnimation";
 import Image from "next/image";
 import ismael from "@/images/ismael.png";
-import syber from "@/images/syber.png";
+// import syber from "@/images/syber.png";
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "small game",
-      image: syber,
-      description:
-        "A small game made with JavaScript and CSS. It's a simple game where you have to eat vegetables and avoid candies with my niece.",
-      link: "https://ismael-101.github.io/syber/seeberyan.html",
-    },
-    {
-      title: "Project 2",
-      image: ismael,
-      description: "This is a project",
-      link: "https://www.google.com",
-    },
-    {
-      title: "Project 3",
-      image: ismael,
-      description: "This is a project",
-      link: "https://www.google.com",
-    },
-    {
-      title: "Project 4",
-      image: ismael,
-      description: "This is a project",
-      link: "https://www.google.com",
-    },
-    {
-      title: "Project 5",
-      image: ismael,
-      description: "This is a project",
-      link: "https://www.google.com",
-    },
-    {
-      title: "Project 6",
-      image: ismael,
-      description: "This is a project",
-      link: "https://www.google.com",
-    },
-    {
-      title: "Project 7",
-      image: ismael,
-      description: "This is a project",
-      link: "https://www.google.com",
-    },
-    {
-      title: "Project 8",
-      image: ismael,
-      description: "This is a project",
-      link: "https://www.google.com",
-    },
-  ];
+  // const projects = [
+  //   {
+  //     title: "small game",
+  //     image: syber,
+  //     description:
+  //       "A small game made with JavaScript and CSS. It's a simple game where you have to eat vegetables and avoid candies with my niece.",
+  //     link: "https://ismael-101.github.io/syber/seeberyan.html",
+  //   },
+  //   {
+  //     title: "Project 2",
+  //     image: ismael,
+  //     description: "This is a project",
+  //     link: "https://www.google.com",
+  //   },
+  //   {
+  //     title: "Project 3",
+  //     image: ismael,
+  //     description: "This is a project",
+  //     link: "https://www.google.com",
+  //   },
+  //   {
+  //     title: "Project 4",
+  //     image: ismael,
+  //     description: "This is a project",
+  //     link: "https://www.google.com",
+  //   },
+  //   {
+  //     title: "Project 5",
+  //     image: ismael,
+  //     description: "This is a project",
+  //     link: "https://www.google.com",
+  //   },
+  //   {
+  //     title: "Project 6",
+  //     image: ismael,
+  //     description: "This is a project",
+  //     link: "https://www.google.com",
+  //   },
+  //   {
+  //     title: "Project 7",
+  //     image: ismael,
+  //     description: "This is a project",
+  //     link: "https://www.google.com",
+  //   },
+  //   {
+  //     title: "Project 8",
+  //     image: ismael,
+  //     description: "This is a project",
+  //     link: "https://www.google.com",
+  //   },
+  // ];
 
   return (
     <motion.div

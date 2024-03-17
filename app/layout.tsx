@@ -28,14 +28,18 @@
 //   );
 // }
 
-"use client";
+// "use client";
 
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Hydrate from "@/components/Hydrate";
 import NavItem from "@/components/main/NavItem";
+import type { Metadata } from "next";
 
-const inter = Inter({ subsets: ["latin"] });
+export const metadata: Metadata = {
+  icons: "/dev.svg",
+  title: "Ismael Ali",
+  description: "Ismael Ali is a web developer based in germany ",
+};
 
 export default function RootLayout({
   children,

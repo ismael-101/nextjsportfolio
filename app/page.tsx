@@ -5,14 +5,28 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import LogosSlide from "../components/Animations/LogosSlide";
 import AnimatedTitle from "../components/Animations/AnimatedTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   pageVariants,
   pageTransition,
 } from "@/components/Animations/PageAnimation";
-
+import Link from "next/link";
+import path from "path";
+import { Button } from "@react-email/components";
 export default function Home() {
   const [open, setOpen] = useState(false);
+  const [about, setAbout] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      const timer = setTimeout(() => {
+        setAbout(true);
+      }, 5000);
+      return () => clearTimeout(timer);
+    } else {
+      setAbout(false);
+    }
+  }, [open]);
 
   return (
     <main className="relative ">
@@ -45,6 +59,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
           )}
+          <></>
           <motion.button
             className={cn(
               "p-4 font-bold rounded-lg text-sm",
@@ -65,6 +80,21 @@ export default function Home() {
           >
             {open ? "⭐Ismael" : "?! Ismael"}
           </motion.button>
+          {about && (
+            <AnimatePresence>
+              <motion.button
+                className="mt-2 btn btn-primary btn-sm"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => {
+                  // Handle navigation to the "/about" page here
+                  window.location.href = "/about";
+                }}
+              >
+                About me
+              </motion.button>
+            </AnimatePresence>
+          )}
         </motion.div>
       </AnimatePresence>
     </main>
