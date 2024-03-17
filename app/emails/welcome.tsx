@@ -21,7 +21,7 @@ export default function Welcome() {
           <Container className="p-8 rounded-lg shadow-lg">
             <Heading className="text-xl pt-4">Hello there 👋 </Heading>
             <Text className="text-lg font-medium text-gray-700">
-              Thanks for reaching out to me. I'll get back to you as soon as
+              Thanks for reaching out to me. Ill get back to you as soon as
               possible.
             </Text>
             <Button
