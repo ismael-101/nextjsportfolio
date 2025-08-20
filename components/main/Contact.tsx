@@ -27,12 +27,12 @@ export default function Contact() {
           <div className="flex items-center max-lg:w-10 gap-2 lg:gap-10">
             <Image src={email} alt="email" width={100} height={200} />
             <p className="text-xl lg:text-4xl font-bold">
-              ismaelwork0@gmail.com
+              {/* ismaelwork0@gmail.com */} will be add later
             </p>
           </div>
           <div className="flex items-center max-lg:w-10 gap-2 lg:gap-10">
             <Image src={phone} alt="email" width={100} height={200} />
-            <p className="text-xl lg:text-4xl font-bold">+491771584936</p>
+            {/* <p className="text-xl lg:text-4xl font-bold">+491771584936</p> */}
           </div>
         </div>
       </motion.div>
