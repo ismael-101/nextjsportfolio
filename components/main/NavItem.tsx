@@ -37,7 +37,7 @@ export default function NavItem() {
           <ThemeButton />
           <div className="flex gap-4">
           <Nav />
-          <CVButton />
+          {/* <CVButton /> */}
           </div>
         </>
       ) : (

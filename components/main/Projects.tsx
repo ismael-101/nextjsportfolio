@@ -69,7 +69,7 @@ export default function Projects() {
       transition={pageTransition}
     >
       <div className="h-full flex items-center justify-center w-full">
-        <h1>This page is coming soon ☕ </h1>
+        {/* <h1>This page is coming soon ☕ </h1> */}
       </div>
       {/* <h1 className="font-bold text-3xl text-primary mt-14 mb-3 ">
         Some of my Projects

@@ -80,7 +80,7 @@ export default function Home() {
           >
             {open ? "⭐Ismael" : "?! Ismael"}
           </motion.button>
-          {about && (
+          {/* {about && (
             <AnimatePresence>
               <motion.button
                 className="mt-2 btn btn-primary btn-sm"
@@ -94,7 +94,7 @@ export default function Home() {
                 About me
               </motion.button>
             </AnimatePresence>
-          )}
+          )} */}
         </motion.div>
       </AnimatePresence>
     </main>

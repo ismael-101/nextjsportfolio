@@ -18,7 +18,7 @@ const Character = styled(motion.span)`
 
 const AnimatedTitle = () => {
   const text = "WEB DEVELOPER"; // This would normally be passed into this component as a prop!
-  const text2 = "full-stack front-end"; // This would normally be passed into this component as a prop!
+  const text2 = "full-stack"; // This would normally be passed into this component as a prop!
   const ctrls = useAnimation();
   const { ref, inView } = useInView({
     threshold: 0.5,

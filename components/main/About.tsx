@@ -46,17 +46,17 @@ export default function About() {
     >
       <div className="py-10 md:h-[100dvh] lg:h-[85dvh] flex items-center overflow-hidden ">
         <div className="w-full m-auto px-5 mx-auto lg:w-[65vw] lg:px-0 lg:my-14 prose ">
-          <h2 className="lg:text-2xl text-accent font-bold ">
+          {/* <h2 className="lg:text-2xl text-accent font-bold ">
             Little bit about Ismael Ali
-          </h2>
-          <div className="flex flex-col md:flex-row items-center w-full md:mx-auto relative ">
-            <div className="z-10 px-2 rounded-lg lg:max-w-[40vw] md:max-w-[50vw]">
+          </h2> */}
+          {/* <div className="flex flex-col md:flex-row items-center w-full md:mx-auto relative "> */}
+            {/* <div className="z-10 px-2 rounded-lg lg:max-w-[40vw] md:max-w-[50vw]">
               <p className="mt-3 lg:mt-3">{first}</p>
               <p className="my-3 lg:my-5">{second}</p>
               <p className="mb-3 lg:mb-6">{third}</p>
               <p className="mb-4 lg:mb-9 ">{forth}</p>
-            </div>
-            <div className="md:absolute right-10 lg:right-0 w-[22rem] mt-5  ">
+            </div> */}
+            {/* <div className="md:absolute right-10 lg:right-0 w-[22rem] mt-5  ">
               <Image
                 className="bg-cover rounded-full h-auto transform -rotate-12 shadow-2xl pointer-events-none"
                 src={ismael}
@@ -64,8 +64,8 @@ export default function About() {
                 height={1000}
                 alt="ismael"
               />
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
           <div className="text-xl">
             <ToolsSlide tools={tools} />
           </div>
